@@ -1,8 +1,7 @@
-# (c) 2022-2025 Michał Górny
+# (c) 2022-2026 Michał Górny
 # SPDX-License-Identifier: GPL-2.0-or-later
 
 import filecmp
-import functools
 import importlib.util
 import os
 import os.path
@@ -50,7 +49,6 @@ def install_wheel_impl(args, wheel: Path):
                     Path(self.destdir) /
                     purelib_path.relative_to(purelib_path.anchor))
 
-        @functools.cache
         def check_symlink_to(self) -> None:
             full_symlink_to = self.destdir_purelib / self.symlink_to
             if not full_symlink_to.exists():
