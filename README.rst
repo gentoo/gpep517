@@ -13,6 +13,9 @@ around pip and venvs.
 
 Change log
 ==========
+v20
+  - fix test regressions with newer ``installer`` versions
+
 v19
   - detect symlink chains when using ``--symlink-to`` and resolve them,
     so that the subsequent symlinks point to the actual file
