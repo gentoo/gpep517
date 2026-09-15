@@ -83,7 +83,7 @@ def patch_sysconfig(sysroot: Path,
     orig_config_vars = sysconfig.get_config_vars
     orig_get_platform = sysconfig.get_platform
 
-    def patched_config_vars():
+    def patched_config_vars(*args):
         cvars = orig_config_vars().copy()
 
         # path variables: we copy them from sysroot, and prepend sysroot
@@ -108,7 +108,7 @@ def patch_sysconfig(sysroot: Path,
             if modvar in sysroot_vars:
                 cvars[modvar] = sysroot_vars[modvar]
 
-        return cvars
+        return [cvars.get(name) for name in args] if args else cvars
 
     def patched_get_platform():
         return sysroot_vars["MULTIARCH"]
